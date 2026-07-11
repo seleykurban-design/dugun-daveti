@@ -1,1 +1,84 @@
-
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#4b0615">
+  <meta name="description" content="Seley & Aybüke düğün davetiyesi">
+  <title>Seley & Aybüke | Düğün Davetiyesi</title>
+  <style>
+    :root{--wine:#5a0718;--wine2:#2b030b;--cream:#f7efe5;--gold:#c7a25d;--ink:#48121f;--paper:#fffaf3}
+    *{box-sizing:border-box}html{scroll-behavior:smooth}
+    body{margin:0;min-height:100vh;font-family:Georgia,"Times New Roman",serif;color:var(--ink);background:radial-gradient(circle at 20% 0%,rgba(255,255,255,.18),transparent 22%),linear-gradient(135deg,#250208,#74142e 50%,#250208);overflow-x:hidden}
+    .ambient{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden}
+    .spark{position:absolute;width:4px;height:4px;border-radius:50%;background:rgba(255,235,190,.88);box-shadow:0 0 12px rgba(255,235,190,.9);animation:rise 9s linear infinite}
+    .petal{position:absolute;top:-12vh;width:18px;height:12px;border-radius:70% 30% 70% 30%;background:linear-gradient(135deg,#8f2441,#5a0718);opacity:.72;animation:fall 12s linear infinite}
+    @keyframes rise{from{transform:translateY(108vh) scale(.5);opacity:0}12%{opacity:1}to{transform:translateY(-12vh) scale(1.2);opacity:0}}
+    @keyframes fall{from{transform:translateY(-10vh) rotate(0deg)}to{transform:translateY(115vh) rotate(560deg)}}
+    .opening{position:fixed;inset:0;z-index:50;display:grid;place-items:center;padding:24px 24px 96px;background:radial-gradient(circle at 50% 35%,rgba(255,255,255,.08),transparent 28%),linear-gradient(135deg,#210207,#681027);transition:opacity .9s ease,visibility .9s ease}
+    .opening.hidden{opacity:0;visibility:hidden}
+    .envelope{width:min(88vw,450px);aspect-ratio:1.58/1;position:relative;border-radius:20px;overflow:visible;background:radial-gradient(circle at 28% 12%,rgba(255,255,255,.08),transparent 25%),repeating-linear-gradient(115deg,rgba(255,255,255,.018) 0 1px,transparent 1px 4px),linear-gradient(145deg,#851934,#430512);border:3px solid #d6af62;box-shadow:0 38px 100px rgba(0,0,0,.55),0 0 0 2px #3b040f,0 0 0 5px #b9873d,inset 0 0 0 3px #4a0614,inset 0 0 0 5px rgba(222,181,101,.62),inset 0 0 45px rgba(25,0,7,.4);perspective:1000px}
+    .envelope:before,.envelope:after{content:"";position:absolute;inset:auto 0 0 0;height:77%;border-radius:0 0 19px 19px;background:repeating-linear-gradient(115deg,rgba(255,255,255,.012) 0 1px,transparent 1px 4px),linear-gradient(145deg,#690b22,#35030d);clip-path:polygon(0 100%,50% 18%,100% 100%)}
+    .envelope:after{background:linear-gradient(215deg,transparent 49.6%,rgba(205,164,91,.45) 50%,transparent 50.5%),linear-gradient(145deg,transparent 49.6%,rgba(205,164,91,.32) 50%,transparent 50.5%);opacity:.8}
+    .flap{position:absolute;inset:0 0 auto 0;height:64%;border-radius:19px 19px 0 0;background:linear-gradient(135deg,#f0d18b,#b77d2f);clip-path:polygon(0 0,100% 0,50% 100%);filter:drop-shadow(0 2px 1px rgba(33,0,8,.65));transform-origin:top;z-index:4;transition:transform 1.1s cubic-bezier(.2,.8,.2,1);backface-visibility:hidden}
+    .flap:before{content:"";position:absolute;inset:4px 5px 6px;border-radius:15px 15px 0 0;background:repeating-linear-gradient(115deg,rgba(255,255,255,.018) 0 1px,transparent 1px 4px),linear-gradient(145deg,#9a2140,#500717);clip-path:polygon(0 0,100% 0,50% 100%)}
+    .seal{position:absolute;left:50%;top:53%;transform:translate(-50%,-50%);width:112px;height:112px;border-radius:50%;z-index:7;background:#5a0718;border:3px solid #c7a25d;box-shadow:0 8px 18px rgba(0,0,0,.42),0 0 0 4px #31030c;overflow:hidden;display:grid;place-items:center}
+    .seal img{display:block;width:100%;height:100%;object-fit:cover;border-radius:50%}
+    .open-btn{position:absolute;left:50%;bottom:-72px;transform:translateX(-50%);z-index:9;min-width:150px;border:1px solid #d0a75e;background:linear-gradient(180deg,#fffaf3,#eee0cf);color:var(--wine);padding:14px 28px;border-radius:999px;font-family:Georgia,"Times New Roman",serif;font-size:.92rem;font-weight:700;letter-spacing:.05em;cursor:pointer;box-shadow:0 10px 30px rgba(0,0,0,.35),inset 0 0 0 2px rgba(255,255,255,.7);transition:transform .25s ease,box-shadow .25s ease,opacity .25s ease}
+    .open-btn:hover{transform:translateX(-50%) translateY(-2px);box-shadow:0 14px 34px rgba(0,0,0,.4),inset 0 0 0 2px rgba(255,255,255,.7)}
+    .open-btn:focus-visible{outline:2px solid #f1cf87;outline-offset:4px}
+    .opening.opened .flap{transform:rotateX(180deg)}.opening.opened .seal{animation:sealAway .6s forwards}@keyframes sealAway{to{transform:translate(-50%,-50%) scale(.15);opacity:0}}
+    .site{position:relative;z-index:1;width:min(100%,940px);margin:auto;padding:32px 18px 72px;opacity:0;transform:translateY(28px);transition:1s ease}.site.visible{opacity:1;transform:none}
+    .hero{text-align:center;color:var(--cream);margin-bottom:24px}.kicker{letter-spacing:.28em;text-transform:uppercase;font-size:.8rem;opacity:.82}.hero h1{margin:12px 0 8px;font-size:clamp(2.7rem,7vw,5.4rem);font-style:italic;font-weight:400;text-shadow:0 8px 26px rgba(0,0,0,.28)}.hero p{max-width:640px;margin:auto;line-height:1.75;opacity:.94}
+    .card{background:rgba(255,250,243,.98);border-radius:28px;padding:12px;box-shadow:0 30px 90px rgba(0,0,0,.38);border:1px solid rgba(199,162,93,.5)}.card img{display:block;width:100%;height:auto;border-radius:18px}
+    .panel{margin-top:22px;background:rgba(255,250,243,.98);border-radius:24px;padding:24px;box-shadow:0 20px 58px rgba(0,0,0,.26);border:1px solid rgba(199,162,93,.42);text-align:center}
+    .countdown{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:16px 0 22px}.time{background:#fffaf3;border:1px solid rgba(90,7,24,.16);border-radius:16px;padding:14px 8px}.time strong{display:block;font-size:1.75rem;color:var(--wine)}.time span{font-size:.82rem}
+    .info-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:18px 0 22px}.info{background:#fffaf3;border:1px solid rgba(90,7,24,.16);border-radius:16px;padding:15px 10px}.info b{display:block;margin-bottom:6px}
+    .map{overflow:hidden;border-radius:18px;border:1px solid rgba(90,7,24,.15);margin:0 0 18px;background:#eee}.map iframe{display:block;width:100%;height:300px;border:0}
+    .buttons{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.btn{display:flex;align-items:center;justify-content:center;min-height:50px;padding:12px 14px;border-radius:14px;text-decoration:none;border:none;cursor:pointer;font:inherit;font-weight:700;background:var(--wine);color:white;box-shadow:0 10px 24px rgba(90,7,24,.24)}.btn.secondary{background:#fffaf3;color:var(--wine);border:1px solid rgba(90,7,24,.25);box-shadow:none}
+    .rsvp{margin-top:18px;padding-top:18px;border-top:1px solid rgba(90,7,24,.14)}.rsvp-actions{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+    .music{position:fixed;right:16px;bottom:16px;z-index:15;width:48px;height:48px;border-radius:50%;border:1px solid rgba(255,255,255,.25);background:rgba(90,7,24,.9);color:white;cursor:pointer;box-shadow:0 8px 22px rgba(0,0,0,.25)}.footer{color:var(--cream);text-align:center;margin-top:24px;opacity:.82;font-size:.92rem}
+    @media(max-width:700px){.opening{padding-bottom:88px}.countdown{grid-template-columns:repeat(2,1fr)}.info-grid,.buttons{grid-template-columns:1fr}.panel{padding:18px}.map iframe{height:240px}.seal{width:104px;height:104px}.open-btn{bottom:-68px}}
+    @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+  </style>
+</head>
+<body>
+  <div class="ambient" aria-hidden="true">
+    <span class="spark" style="left:7%;animation-delay:0s"></span><span class="spark" style="left:18%;animation-delay:2s"></span><span class="spark" style="left:31%;animation-delay:5s"></span><span class="spark" style="left:46%;animation-delay:1s"></span><span class="spark" style="left:61%;animation-delay:4s"></span><span class="spark" style="left:76%;animation-delay:6s"></span><span class="spark" style="left:90%;animation-delay:3s"></span>
+    <span class="petal" style="left:10%;animation-delay:0s"></span><span class="petal" style="left:28%;animation-delay:4s"></span><span class="petal" style="left:49%;animation-delay:8s"></span><span class="petal" style="left:67%;animation-delay:2s"></span><span class="petal" style="left:86%;animation-delay:6s"></span>
+  </div>
+  <div class="opening" id="opening">
+    <div class="envelope">
+      <div class="flap"></div>
+      <div class="seal"><img src="altin-kugu-muhur.png" alt="Altın kuğu armalı mühür"></div>
+      <button class="open-btn" id="openInvitation">Daveti Aç</button>
+    </div>
+  </div>
+  <main class="site" id="site">
+    <section class="hero"><div class="kicker">Düğün Davetiyesi</div><h1>Seley & Aybüke</h1><p>Bu anlamlı günümüzde sizleri de aramızda görmekten kıvanç duyarız.</p></section>
+    <section class="card"><img src="davetiye.jpeg" alt="Seley ve Aybüke düğün davetiyesi"></section>
+    <section class="panel">
+      <h2>Düğünümüze Kalan Süre</h2>
+      <div class="countdown"><div class="time"><strong id="days">0</strong><span>Gün</span></div><div class="time"><strong id="hours">0</strong><span>Saat</span></div><div class="time"><strong id="minutes">0</strong><span>Dakika</span></div><div class="time"><strong id="seconds">0</strong><span>Saniye</span></div></div>
+      <div class="info-grid"><div class="info"><b>📅 Tarih</b><span>08 Ağustos 2026</span></div><div class="info"><b>🕖 Saat</b><span>19:00</span></div><div class="info"><b>📍 Mekân</b><span>Gönül Davet Salonu</span></div></div>
+      <div class="map"><iframe title="Gönül Davet Salonu haritası" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=G%C3%B6n%C3%BCl%20Davet%20Salonu%204.%20Levent%20Konaklar%20Mah.%20Me%C5%9Feli%20Sok.%20No%3A25%2FA%20Be%C5%9Fikta%C5%9F%20%C4%B0stanbul&output=embed"></iframe></div>
+      <div class="buttons">
+        <a class="btn" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=G%C3%B6n%C3%BCl%20Davet%20Salonu%204.%20Levent%20Konaklar%20Mah.%20Me%C5%9Feli%20Sok.%20No%3A25%2FA%20Be%C5%9Fikta%C5%9F%20%C4%B0stanbul">📍 Yol Tarifi Al</a>
+        <a class="btn secondary" href="data:text/calendar;charset=utf-8,BEGIN%3AVCALENDAR%0AVERSION%3A2.0%0ABEGIN%3AVEVENT%0ADTSTART%3A20260808T160000Z%0ADTEND%3A20260808T210000Z%0ASUMMARY%3ASeley%20%26%20Ayb%C3%BCke%20D%C3%BC%C4%9F%C3%BCn%C3%BC%0ALOCATION%3AG%C3%B6n%C3%BCl%20Davet%20Salonu%2C%204.%20Levent%2C%20Be%C5%9Fikta%C5%9F%2F%C4%B0stanbul%0ADESCRIPTION%3ABu%20anlaml%C4%B1%20g%C3%BCn%C3%BCm%C3%BCzde%20sizleri%20de%20aram%C4%B1zda%20g%C3%B6rmekten%20k%C4%B1van%C3%A7%20duyar%C4%B1z.%0AEND%3AVEVENT%0AEND%3AVCALENDAR" download="seley-aybuke-dugun.ics">📅 Takvime Ekle</a>
+        <button class="btn secondary" id="share">💬 Paylaş</button>
+      </div>
+      <div class="rsvp"><p>Katılım durumunuzu WhatsApp üzerinden bildirebilirsiniz.</p><div class="rsvp-actions"><a class="btn" target="_blank" rel="noopener" href="https://wa.me/?text=Seley%20%26%20Ayb%C3%BCke%20d%C3%BC%C4%9F%C3%BCn%C3%BCne%20kat%C4%B1laca%C4%9F%C4%B1m.">✓ Katılacağım</a><a class="btn secondary" target="_blank" rel="noopener" href="https://wa.me/?text=Seley%20%26%20Ayb%C3%BCke%20d%C3%BC%C4%9F%C3%BCn%C3%BCne%20maalesef%20kat%C4%B1lamayaca%C4%9F%C4%B1m.">Katılamayacağım</a></div></div>
+    </section>
+    <div class="footer">Forever begins · 08.08.2026</div>
+  </main>
+  <button class="music" id="music" title="Müziği aç/kapat">♪</button>
+  <script>
+    const opening=document.getElementById("opening"),site=document.getElementById("site"),openButton=document.getElementById("openInvitation"),shareButton=document.getElementById("share"),musicButton=document.getElementById("music");let audioContext,ambienceNodes=[],musicOn=false;
+    function startAmbient(){if(musicOn)return;audioContext=audioContext||new(window.AudioContext||window.webkitAudioContext)();const master=audioContext.createGain();master.gain.value=.035;master.connect(audioContext.destination);[261.63,329.63,392].forEach((freq,i)=>{const osc=audioContext.createOscillator(),gain=audioContext.createGain();osc.type="sine";osc.frequency.value=freq;gain.gain.value=.08/(i+1);osc.connect(gain);gain.connect(master);osc.start();ambienceNodes.push(osc,gain)});musicOn=true;musicButton.textContent="♫"}
+    function stopAmbient(){ambienceNodes.forEach(node=>{try{if(node.stop)node.stop()}catch(e){}try{node.disconnect()}catch(e){}});ambienceNodes=[];musicOn=false;musicButton.textContent="♪"}
+    openButton.addEventListener("click",()=>{opening.classList.add("opened");startAmbient();setTimeout(()=>{opening.classList.add("hidden");site.classList.add("visible")},650)});musicButton.addEventListener("click",()=>{musicOn?stopAmbient():startAmbient()});
+    const target=new Date("2026-08-08T19:00:00+03:00").getTime();function updateCountdown(){const diff=target-Date.now();if(diff<=0){["days","hours","minutes","seconds"].forEach(id=>document.getElementById(id).textContent="0");return}document.getElementById("days").textContent=Math.floor(diff/86400000);document.getElementById("hours").textContent=Math.floor(diff%86400000/3600000);document.getElementById("minutes").textContent=Math.floor(diff%3600000/60000);document.getElementById("seconds").textContent=Math.floor(diff%60000/1000)}updateCountdown();setInterval(updateCountdown,1000);
+    shareButton.addEventListener("click",async()=>{const data={title:"Seley & Aybüke Düğün Davetiyesi",text:"Bu anlamlı günümüzde sizleri de aramızda görmekten kıvanç duyarız.",url:window.location.href};try{if(navigator.share){await navigator.share(data)}else{await navigator.clipboard.writeText(window.location.href);shareButton.textContent="✓ Link Kopyalandı";setTimeout(()=>shareButton.textContent="💬 Paylaş",1800)}}catch(e){}});
+  </script>
+</body>
+</html>
