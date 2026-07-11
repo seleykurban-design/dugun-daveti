@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#5a0718" />
+  <meta name="description" content="Seley & Aybüke düğün davetiyesi" />
+  <title>Seley & Aybüke | Düğün Davetiyesi</title>
+  <style>
+    :root{
+      --bordo:#5a0718;
+      --bordo2:#2a030b;
+      --krem:#f7efe5;
+      --altin:#caa45f;
+      --yazi:#4a1420;
+      --beyaz:#fffaf3;
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      min-height:100vh;
+      font-family:Georgia,"Times New Roman",serif;
+      color:var(--yazi);
+      background:
+        radial-gradient(circle at 15% 5%,rgba(255,255,255,.18),transparent 23%),
+        linear-gradient(135deg,var(--bordo2),#74112b 50%,var(--bordo2));
+      overflow-x:hidden;
+    }
+
+    .parilti{
+      position:fixed; inset:0; pointer-events:none; overflow:hidden; z-index:0;
+    }
+    .parilti span{
+      position:absolute; width:4px; height:4px; border-radius:50%;
+      background:rgba(255,232,174,.8);
+      box-shadow:0 0 12px rgba(255,232,174,.9);
+      animation:yukari 9s linear infinite;
+    }
+    @keyframes yukari{
+      from{transform:translateY(110vh) scale(.4);opacity:0}
+      12%{opacity:1}
+      to{transform:translateY(-15vh) scale(1.2);opacity:0}
+    }
+
+    .acilis{
+      position:fixed; inset:0; z-index:50; display:grid; place-items:center;
+      padding:24px; background:linear-gradient(135deg,#230209,#681026);
+      transition:opacity .8s ease,visibility .8s ease;
+    }
+    .acilis.gizli{opacity:0;visibility:hidden}
+    .zarf{
+      width:min(88vw,430px); aspect-ratio:1.55/1; position:relative;
+      background:linear-gradient(145deg,#7e1230,#4c0718);
+      border-radius:20px; overflow:hidden;
+      box-shadow:0 35px 90px rgba(0,0,0,.48);
+      border:1px solid rgba(255,255,255,.08);
+    }
+    .zarf:before,.zarf:after{
+      content:""; position:absolute; inset:auto 0 0 0; height:76%;
+      background:linear-gradient(145deg,#670b22,#3b0411);
+      clip-path:polygon(0 100%,50% 18%,100% 100%);
+    }
+    .kapak{
+      position:absolute; inset:0 0 auto 0; height:63%;
+      background:linear-gradient(145deg,#941a3a,#57091c);
+      clip-path:polygon(0 0,100% 0,50% 100%);
+      transform-origin:top; z-index:4; transition:transform 1s ease;
+    }
+    .muhur{
+      position:absolute; left:50%; top:53%; transform:translate(-50%,-50%);
+      width:96px; height:96px; border-radius:50%; z-index:7;
+      background:radial-gradient(circle at 35% 30%,#9f2a47,#4f0717 70%);
+      border:4px solid #33030d;
+      box-shadow:0 8px 18px rgba(0,0,0,.4),inset 0 0 0 2px rgba(255,255,255,.08);
+      display:grid; place-items:center; color:#e8ca8f;
+      font-size:25px; letter-spacing:2px; font-weight:bold;
+    }
+    .ac-btn{
+      position:absolute; left:50%; bottom:26px; transform:translateX(-50%);
+      z-index:9; border:1px solid rgba(255,255,255,.3);
+      background:rgba(255,250,243,.97); color:var(--bordo);
+      padding:14px 24px; border-radius:999px; font-weight:700; cursor:pointer;
+      box-shadow:0 8px 25px rgba(0,0,0,.25);
+    }
+    .acilis.acildi .kapak{transform:rotateX(180deg)}
+    .acilis.acildi .muhur{animation:muhurYok .6s forwards}
+    @keyframes muhurYok{to{transform:translate(-50%,-50%) scale(.2);opacity:0}}
+
+    .sayfa{
+      position:relative; z-index:1; width:min(100%,920px); margin:auto;
+      padding:34px 18px 72px; opacity:0; transform:translateY(24px);
+      transition:1s ease;
+    }
+    .sayfa.gorunur{opacity:1;transform:none}
+
+    .ust{text-align:center;color:var(--krem);margin-bottom:24px}
+    .ust .mini{letter-spacing:.28em;text-transform:uppercase;font-size:.82rem;opacity:.84}
+    .ust h1{
+      margin:12px 0 8px; font-size:clamp(2.5rem,7vw,5.2rem);
+      font-style:italic; font-weight:400; text-shadow:0 8px 25px rgba(0,0,0,.25);
+    }
+    .ust p{max-width:620px;margin:auto;line-height:1.75;opacity:.94}
+
+    .kart{
+      background:rgba(255,250,243,.97); border-radius:28px; padding:12px;
+      box-shadow:0 30px 85px rgba(0,0,0,.36);
+      border:1px solid rgba(202,164,95,.48);
+    }
+    .kart img{display:block;width:100%;height:auto;border-radius:18px}
+
+    .panel{
+      margin-top:22px; background:rgba(255,250,243,.97); border-radius:24px;
+      padding:24px; box-shadow:0 20px 55px rgba(0,0,0,.25);
+      border:1px solid rgba(202,164,95,.42); text-align:center;
+    }
+
+    .geri-sayim{
+      display:grid; grid-template-columns:repeat(4,1fr); gap:10px; margin:16px 0 22px;
+    }
+    .zaman{
+      background:#fffaf3; border:1px solid rgba(90,7,24,.16);
+      border-radius:16px; padding:14px 8px;
+    }
+    .zaman strong{display:block;font-size:1.7rem;color:var(--bordo)}
+    .zaman span{font-size:.82rem}
+
+    .bilgi-grid{
+      display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin:18px 0 22px;
+    }
+    .bilgi{
+      background:#fffaf3; border:1px solid rgba(90,7,24,.16);
+      border-radius:16px; padding:15px 10px;
+    }
+    .bilgi b{display:block;margin-bottom:6px}
+
+    .butonlar{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+    .btn{
+      display:flex;align-items:center;justify-content:center;min-height:50px;
+      padding:12px 14px;border-radius:14px;text-decoration:none;border:none;
+      cursor:pointer;font:inherit;font-weight:700;background:var(--bordo);color:#fff;
+      box-shadow:0 10px 24px rgba(90,7,24,.24);
+    }
+    .btn.ikincil{
+      background:#fffaf3;color:var(--bordo);
+      border:1px solid rgba(90,7,24,.26);box-shadow:none;
+    }
+
+    .rsvp{
+      margin-top:18px; padding-top:18px; border-top:1px solid rgba(90,7,24,.14);
+    }
+    .rsvp p{margin:0 0 12px}
+    .rsvp-butonlar{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+
+    .alt{color:var(--krem);text-align:center;margin-top:24px;opacity:.82;font-size:.92rem}
+
+    @media(max-width:700px){
+      .geri-sayim{grid-template-columns:repeat(2,1fr)}
+      .bilgi-grid,.butonlar{grid-template-columns:1fr}
+      .panel{padding:18px}
+    }
+
+    @media(prefers-reduced-motion:reduce){
+      *{animation:none!important;transition:none!important}
+    }
+  </style>
+</head>
+<body>
+
+  <div class="parilti" aria-hidden="true">
+    <span style="left:7%;animation-delay:0s"></span>
+    <span style="left:18%;animation-delay:2s"></span>
+    <span style="left:31%;animation-delay:5s"></span>
+    <span style="left:46%;animation-delay:1s"></span>
+    <span style="left:61%;animation-delay:4s"></span>
+    <span style="left:76%;animation-delay:6s"></span>
+    <span style="left:90%;animation-delay:3s"></span>
+  </div>
+
+  <div class="acilis" id="acilis">
+    <div class="zarf">
+      <div class="kapak"></div>
+      <div class="muhur">S·A</div>
+      <button class="ac-btn" id="davetiAc">Daveti Aç</button>
+    </div>
+  </div>
+
+  <main class="sayfa" id="sayfa">
+    <section class="ust">
+      <div class="mini">Düğün Davetiyesi</div>
+      <h1>Seley &amp; Aybüke</h1>
+      <p>Bu anlamlı günümüzde sizleri de aramızda görmekten kıvanç duyarız.</p>
+    </section>
+
+    <section class="kart">
+      <img src="davetiye.jpeg" alt="Seley ve Aybüke düğün davetiyesi">
+    </section>
+
+    <section class="panel">
+      <h2>Düğünümüze Kalan Süre</h2>
+
+      <div class="geri-sayim">
+        <div class="zaman"><strong id="gun">0</strong><span>Gün</span></div>
+        <div class="zaman"><strong id="saat">0</strong><span>Saat</span></div>
+        <div class="zaman"><strong id="dakika">0</strong><span>Dakika</span></div>
+        <div class="zaman"><strong id="saniye">0</strong><span>Saniye</span></div>
+      </div>
+
+      <div class="bilgi-grid">
+        <div class="bilgi"><b>📅 Tarih</b><span>08 Ağustos 2026</span></div>
+        <div class="bilgi"><b>🕖 Saat</b><span>19:00</span></div>
+        <div class="bilgi"><b>📍 Mekân</b><span>Gönül Davet Salonu</span></div>
+      </div>
+
+      <div class="butonlar">
+        <a class="btn" target="_blank" rel="noopener"
+           href="https://www.google.com/maps/search/?api=1&query=G%C3%B6n%C3%BCl%20Davet%20Salonu%204.%20Levent%20Konaklar%20Mah.%20Me%C5%9Feli%20Sok.%20No%3A25%2FA%20Be%C5%9Fikta%C5%9F%20%C4%B0stanbul">
+          📍 Yol Tarifi Al
+        </a>
+
+        <a class="btn ikincil"
+           href="data:text/calendar;charset=utf-8,BEGIN%3AVCALENDAR%0AVERSION%3A2.0%0ABEGIN%3AVEVENT%0ADTSTART%3A20260808T160000Z%0ADTEND%3A20260808T210000Z%0ASUMMARY%3ASeley%20%26%20Ayb%C3%BCke%20D%C3%BC%C4%9F%C3%BCn%C3%BC%0ALOCATION%3AG%C3%B6n%C3%BCl%20Davet%20Salonu%2C%204.%20Levent%2C%20Be%C5%9Fikta%C5%9F%2F%C4%B0stanbul%0ADESCRIPTION%3ABu%20anlaml%C4%B1%20g%C3%BCn%C3%BCm%C3%BCzde%20sizleri%20de%20aram%C4%B1zda%20g%C3%B6rmekten%20k%C4%B1van%C3%A7%20duyar%C4%B1z.%0AEND%3AVEVENT%0AEND%3AVCALENDAR"
+           download="seley-aybuke-dugun.ics">
+          📅 Takvime Ekle
+        </a>
+
+        <button class="btn ikincil" id="paylas">💬 Paylaş</button>
+      </div>
+
+      <div class="rsvp">
+        <p>Katılım durumunuzu WhatsApp üzerinden bildirebilirsiniz.</p>
+        <div class="rsvp-butonlar">
+          <a class="btn" target="_blank"
+             href="https://wa.me/?text=Seley%20%26%20Ayb%C3%BCke%20d%C3%BC%C4%9F%C3%BCn%C3%BCne%20kat%C4%B1laca%C4%9F%C4%B1m.">
+             ✓ Katılacağım
+          </a>
+          <a class="btn ikincil" target="_blank"
+             href="https://wa.me/?text=Seley%20%26%20Ayb%C3%BCke%20d%C3%BC%C4%9F%C3%BCn%C3%BCne%20maalesef%20kat%C4%B1lamayaca%C4%9F%C4%B1m.">
+             Katılamayacağım
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <div class="alt">Forever begins · 08.08.2026</div>
+  </main>
+
+  <script>
+    const acilis = document.getElementById("acilis");
+    const sayfa = document.getElementById("sayfa");
+    const davetiAc = document.getElementById("davetiAc");
+    const paylas = document.getElementById("paylas");
+
+    davetiAc.addEventListener("click", () => {
+      acilis.classList.add("acildi");
+      setTimeout(() => {
+        acilis.classList.add("gizli");
+        sayfa.classList.add("gorunur");
+      }, 850);
+    });
+
+    const hedef = new Date("2026-08-08T19:00:00+03:00").getTime();
+
+    function sayaciGuncelle(){
+      const fark = hedef - Date.now();
+      if(fark <= 0){
+        document.getElementById("gun").textContent = "0";
+        document.getElementById("saat").textContent = "0";
+        document.getElementById("dakika").textContent = "0";
+        document.getElementById("saniye").textContent = "0";
+        return;
+      }
+
+      document.getElementById("gun").textContent = Math.floor(fark / 86400000);
+      document.getElementById("saat").textContent = Math.floor((fark % 86400000) / 3600000);
+      document.getElementById("dakika").textContent = Math.floor((fark % 3600000) / 60000);
+      document.getElementById("saniye").textContent = Math.floor((fark % 60000) / 1000);
+    }
+
+    sayaciGuncelle();
+    setInterval(sayaciGuncelle,1000);
+
+    paylas.addEventListener("click", async () => {
+      const veri = {
+        title:"Seley & Aybüke Düğün Davetiyesi",
+        text:"Bu anlamlı günümüzde sizleri de aramızda görmekten kıvanç duyarız.",
+        url:window.location.href
+      };
+
+      try{
+        if(navigator.share){
+          await navigator.share(veri);
+        }else{
+          await navigator.clipboard.writeText(window.location.href);
+          paylas.textContent="✓ Link Kopyalandı";
+          setTimeout(()=>paylas.textContent="💬 Paylaş",1800);
+        }
+      }catch(e){}
+    });
+  </script>
+</body>
+</html>
